@@ -351,7 +351,7 @@ public class DateParser {
     }
 
     /**
-     * get this week date
+     * get this weekday date
      * 
      * @param dateOfTheTask
      * @param dayOfTheWeek

@@ -245,13 +245,6 @@ public class DescriptionParser {
 
     }
 
-    /**
-     * check if the text is conjunction
-     * 
-     * @param string
-     *            : word
-     * @return true if it is conjunction otherwise false
-     */
     private boolean isConjunction(String text) {
         return text.matches("\\b(@|due on|on|at|from|to|by|due)\\b");
     }

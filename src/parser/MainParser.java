@@ -27,7 +27,7 @@ public class MainParser {
         startTime = dateTimeParser.getStartTime();
         endTime = dateTimeParser.getEndTime();
         feedback = dateTimeParser.getFeedBack();
-        numberOfTime = dateTimeParser.getNumberOfTime();
+        numberOfTime = dateTimeParser.getNumberOfTimeDetected();
         userInputLeft = dateTimeParser.getUserInputLeft();
 
         DescriptionParser descriptionParser = new DescriptionParser(userInput,

@@ -32,11 +32,7 @@ public class EscapedTextParser {
         return textEscaped;
     }
 
-    /**
-     * get the ArrayList of escaped text
-     * 
-     * @return ArrayList of escaped text
-     */
+  
     public ArrayList<String> getListOfEscapedText() {
         return escapedTextList;
 

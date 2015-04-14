@@ -80,7 +80,7 @@ public class DateTimeParser {
         storageOfDate = addInMissingDate(storageOfTime, storageOfDate);
 
         addWeekDayToDate(storageOfDate);
-        setNumberOfTime(storageOfTime);
+        setNumberOfTimeDetected(storageOfTime);
         setAllParameters(storageOfTime, storageOfDate);
     }
 
@@ -251,7 +251,7 @@ public class DateTimeParser {
 
     /**
      * get the feedback for overdue date like start date or time keyed is before
-     * current date but end time and date
+     * current date but not end time and date
      * 
      * @return feedback for overdue date to logic
      */
@@ -276,15 +276,6 @@ public class DateTimeParser {
 
     }
 
-    /**
-     * set all parameters : start time and date, end time and date, deadline
-     * time and deadline time
-     * 
-     * @param storageOfTime
-     *            : contains all time
-     * @param storageOfDate
-     *            contains all date
-     */
     private void setAllParameters(ArrayList<String> storageOfTime,
             ArrayList<String> storageOfDate) {
 
@@ -649,9 +640,7 @@ public class DateTimeParser {
         return numberBeforeCurrentDate;
     }
 
-    /**
-     * set all the parameters to "-"
-     */
+  
     private void setAllParametersToDash() {
         setStartTime("-");
         setEndTime("-");
@@ -659,74 +648,36 @@ public class DateTimeParser {
         setEndDate("-");
     }
 
-    /**
-     * set start date
-     * 
-     * @param date
-     */
+   
     private void setStartDate(String date) {
         startDate = date;
     }
 
-    /**
-     * get start date
-     * 
-     * @return start date for timed task
-     */
+   
     public String getStartDate() {
         return startDate;
     }
 
-    /**
-     * set the end date
-     * 
-     * @param date
-     */
     private void setEndDate(String date) {
         endDate = date;
     }
 
-    /**
-     * get end end
-     * 
-     * @return end date for timed
-     */
     public String getEndDate() {
         return endDate;
     }
 
-    /**
-     * set end time
-     * 
-     * @param time
-     */
     private void setEndTime(String time) {
         endTime = time;
     }
-
-    /**
-     * get end time
-     * 
-     * @return end time
-     */
+  
     public String getEndTime() {
         return endTime;
     }
 
-    /**
-     * set the start time for timed task
-     * 
-     * @param time
-     */
     private void setStartTime(String time) {
         startTime = time;
     }
 
-    /**
-     * return start time for timed task
-     * 
-     * @return start time
-     */
     public String getStartTime() {
         return startTime;
     }
@@ -980,11 +931,6 @@ public class DateTimeParser {
         return isStartTimeLaterThanEnd;
     }
 
-    /**
-     * get the current date in DD/MM/YYYY
-     * 
-     * @return date in DD/MM/YYYY
-     */
     private static String getCurrentDate() {
 
         DateFormat date = new SimpleDateFormat(DATE_FORMAT);
@@ -1041,21 +987,11 @@ public class DateTimeParser {
         return timeOfTheTask;
     }
 
-    /**
-     * set the number of time stored in arrayList
-     * 
-     * @param storageOfParameters
-     */
-    public void setNumberOfTime(ArrayList<String> storageOfParameters) {
+    public void setNumberOfTimeDetected(ArrayList<String> storageOfParameters) {
         numberOfTime = storageOfParameters.size();
     }
-
-    /**
-     * return the number of time detected and stored in arrayList
-     * 
-     * @return the number of time detected
-     */
-    public int getNumberOfTime() {
+  
+    public int getNumberOfTimeDetected() {
         return numberOfTime;
     }
 

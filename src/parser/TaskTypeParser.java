@@ -25,20 +25,10 @@ public class TaskTypeParser {
         setTaskType(taskType);
     }
 
-    /**
-     * set the task type into this class
-     * 
-     * @param detectedTaskType
-     */
     public void setTaskType(String detectedTaskType) {
         taskType = detectedTaskType;
     }
 
-    /**
-     * Determine the type of task.
-     * 
-     * @return the task type.
-     */
     public String getTaskType() {
         return taskType;
     }

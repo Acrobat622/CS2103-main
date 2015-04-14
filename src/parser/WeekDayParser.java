@@ -144,12 +144,6 @@ public class WeekDayParser {
         return dayOfWeekInWord;
     }
 
-    /**
-     * set day, month, year into the calendar after detected
-     * 
-     * @param dateOfTheTask
-     * @param calendar
-     */
     private static void setDateIntoCalendar(int day, int month, int year,
             Calendar calendar) {
         calendar.set(Calendar.DATE, day);
