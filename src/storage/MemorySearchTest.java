@@ -28,30 +28,30 @@ public class MemorySearchTest {
     Task newTask1, newTask2, newTask3, newTask4, newTask5, newTask6, newTask7;    
     @Before
     public void setUp() throws Exception {
-          TaskCreator tc = new TaskCreator("task 1 from 01/05/2015 5pm to 6pm");
-          newTask1 = tc.createNewTask();
-          tc.setNewString("task 2 01/05/2015 by 10pm");
-          newTask2 = tc.createNewTask();
-          tc.setNewString("task 3 02/05/2015 from 4am to 5am");
-          newTask3 = tc.createNewTask();
-          tc.setNewString("task 4 from 01/05/2015 6pm to 8pm");
-          newTask4 = tc.createNewTask();
-          tc.setNewString("task 5 from 25/04 to 29/04");
-          newTask5 = tc.createNewTask();
-          tc.setNewString("task 6 from 20/04 to 23/04");
-          newTask6 = tc.createNewTask();
-          tc.setNewString("task 7 02/05/2015 1am");
-          newTask7 = tc.createNewTask();
-          
-          memory.removeAll();
-          memory.addTask(newTask1);
-          memory.addTask(newTask2);
-          memory.addTask(newTask3);
-          memory.addTask(newTask4);
-          memory.addTask(newTask5);
-          memory.addTask(newTask6);
-          memory.addTask(newTask7);
-          
+        TaskCreator tc = new TaskCreator("task 1 from 01/05/2015 5pm to 6pm");
+        newTask1 = tc.createNewTask();
+        tc.setNewString("task 2 01/05/2015 by 10pm");
+        newTask2 = tc.createNewTask();
+        tc.setNewString("task 3 02/05/2015 from 4am to 5am");
+        newTask3 = tc.createNewTask();
+        tc.setNewString("task 4 from 01/05/2015 6pm to 8pm");
+        newTask4 = tc.createNewTask();
+        tc.setNewString("task 5 from 25/04 to 29/04");
+        newTask5 = tc.createNewTask();
+        tc.setNewString("task 6 from 20/04 to 23/04");
+        newTask6 = tc.createNewTask();
+        tc.setNewString("task 7 02/05/2015 1am");
+        newTask7 = tc.createNewTask();
+
+        memory.removeAll();
+        memory.addTask(newTask1);
+        memory.addTask(newTask2);
+        memory.addTask(newTask3);
+        memory.addTask(newTask4);
+        memory.addTask(newTask5);
+        memory.addTask(newTask6);
+        memory.addTask(newTask7);
+
     }
 
     /*
@@ -68,9 +68,9 @@ public class MemorySearchTest {
         correctSearchList.add(newTask4);
         Collections.sort(correctSearchList, new TaskComparator());
         try {
-             assertEquals(correctSearchList, memory.searchDate("01/05/2015"));
+            assertEquals(correctSearchList, memory.searchDate("01/05/2015"));
         } catch (ParseException pe) {
-            System.out.println("Error while parsing date\n");
+            fail("Error while parsing date\n");
         }
     }
 
@@ -80,13 +80,13 @@ public class MemorySearchTest {
      */
     public void testSearchSingleDay2() {
         try {
-             assertTrue(memory.searchDate("03/05/2015").isEmpty());
-             assertTrue(memory.searchDate("30/04/2015").isEmpty());
+            assertTrue(memory.searchDate("03/05/2015").isEmpty());
+            assertTrue(memory.searchDate("30/04/2015").isEmpty());
         } catch (ParseException pe) {
-            System.out.println("Error while parsing date\n");
+            fail("Error while parsing date\n");
         }
     }
-    
+
     @Test
     /**
      * This is a boundary case when the end of the period specified matches the start
@@ -100,11 +100,11 @@ public class MemorySearchTest {
         Collections.sort(correctSearchList, new TaskComparator());
         try {
             assertEquals(correctSearchList, memory.searchDate("30/04/2015", "01/05/2015"));
-       } catch (ParseException pe) {
-           System.out.println("Error while parsing date\n");
-       }
+        } catch (ParseException pe) {
+            fail("Error while parsing date\n");
+        }
     }
-    
+
     @Test
     /**
      * This is a boundary case when the start of the period specified matches the end
@@ -116,11 +116,11 @@ public class MemorySearchTest {
         correctSearchList.add(newTask3);
         try {
             assertEquals(correctSearchList, memory.searchDate("02/05/2015", "04/05/2015"));
-       } catch (ParseException pe) {
-           System.out.println("Error while parsing date\n");
-       }
+        } catch (ParseException pe) {
+            fail("Error while parsing date\n");
+        }
     }
-    
+
     @Test
     /**
      * This is a boundary case when period specified covers the entire time span
@@ -131,11 +131,11 @@ public class MemorySearchTest {
         correctSearchList.add(newTask5);
         try {
             assertEquals(correctSearchList, memory.searchDate("24/04/2015", "30/04/2015"));
-       } catch (ParseException pe) {
-           System.out.println("Error while parsing date\n");
-       }
+        } catch (ParseException pe) {
+            fail("Error while parsing date\n");
+        }
     }
-    
+
     @Test
     /**
      * This is a boundary case when period specified falls within the entire time span
@@ -146,11 +146,11 @@ public class MemorySearchTest {
         correctSearchList.add(newTask5);
         try {
             assertEquals(correctSearchList, memory.searchDate("26/04/2015", "27/04/2015"));
-       } catch (ParseException pe) {
-           System.out.println("Error while parsing date\n");
-       }
+        } catch (ParseException pe) {
+            fail("Error while parsing date\n");
+        }
     }
-    
+
     @Test
     /**
      * This is a boundary case when period specified only covers portion 
@@ -162,11 +162,11 @@ public class MemorySearchTest {
         correctSearchList.add(newTask5);
         try {
             assertEquals(correctSearchList, memory.searchDate("22/04/2015", "26/04/2015"));
-       } catch (ParseException pe) {
-           System.out.println("Error while parsing date\n");
-       }
+        } catch (ParseException pe) {
+            fail("Error while parsing date\n");
+        }
     }
-    
+
     /*
      * The following test cases covers the time related searches
      */
@@ -180,23 +180,23 @@ public class MemorySearchTest {
         correctSearchList.add(newTask3);
         Collections.sort(correctSearchList, new TaskComparator());
         try {
-             assertEquals(correctSearchList, memory.searchTime("02/05/2015 04:00"));
-             assertEquals(correctSearchList, memory.searchTime("02/05/2015 05:00"));
+            assertEquals(correctSearchList, memory.searchTime("02/05/2015 04:00"));
+            assertEquals(correctSearchList, memory.searchTime("02/05/2015 05:00"));
         } catch (ParseException pe) {
-            System.out.println("Error while parsing date\n");
+            fail("Error while parsing date\n");
         }
-        
+
         correctSearchList.clear();
         correctSearchList.add(newTask1);
         correctSearchList.add(newTask4);
         Collections.sort(correctSearchList, new TaskComparator());
         try {
             assertEquals(correctSearchList, memory.searchTime("01/05/2015 18:00"));
-       } catch (ParseException pe) {
-           System.out.println("Error while parsing date\n");
-       }
+        } catch (ParseException pe) {
+            fail("Error while parsing date\n");
+        }
     }
-    
+
     @Test
     /**
      * this is a boundary case where the date specified is slightly before or after
@@ -204,27 +204,109 @@ public class MemorySearchTest {
      */
     public void testSearchSingleTime2() {        
         try {
-             assertTrue(memory.searchTime("02/05/2015 03:59").isEmpty());
-             assertTrue(memory.searchTime("02/05/2015 05:01").isEmpty());
+            assertTrue(memory.searchTime("02/05/2015 03:59").isEmpty());
+            assertTrue(memory.searchTime("02/05/2015 05:01").isEmpty());
         } catch (ParseException pe) {
-            System.out.println("Error while parsing date\n");
+            fail("Error while parsing date\n");
         }
     }
-    
+
     @Test
     /**
-     * this is a boundary case where the date specified is within one hour of
+     * boundary cases where the date specified is within one hour of
      * the deadline of a task
      */
     public void testSearchSingleTime3() { 
         ArrayList<Task> correctSearchList = new ArrayList<Task>();
         correctSearchList.add(newTask7);
         try {
-             assertEquals(correctSearchList, memory.searchTime("02/05/2015 00:30"));
-             assertEquals(correctSearchList, memory.searchTime("02/05/2015 00:00"));
-             assertTrue(memory.searchTime("01/05/2015 23:59").isEmpty());
+            assertEquals(correctSearchList, memory.searchTime("02/05/2015 00:30"));
+            assertEquals(correctSearchList, memory.searchTime("02/05/2015 00:00"));
+            assertTrue(memory.searchTime("01/05/2015 23:59").isEmpty());
         } catch (ParseException pe) {
-            System.out.println("Error while parsing date\n");
+            fail("Error while parsing date\n");
+        }
+    }
+
+    @Test
+    /**
+     * Boundary case where the period of time specified covers the entire
+     * period of a task
+     */
+    public void testSearchPeriodTime1() {
+        ArrayList<Task> correctSearchList = new ArrayList<Task>();
+        correctSearchList.add(newTask1);
+        correctSearchList.add(newTask4);        
+        try {
+            assertEquals(correctSearchList, memory.searchTime("01/05/2015 15:30", "01/05/2015 18:30"));
+        } catch (ParseException pe) {
+            fail("Error while parsing date\n");
+        }
+    }
+
+    @Test
+    /**
+     * Boundary case where the start or end of time specified matches the end or
+     * start of a task respectively
+     */
+    public void testSearchPeriodTime2() {
+        ArrayList<Task> correctSearchList = new ArrayList<Task>();
+        correctSearchList.add(newTask4);        
+        try {
+            assertEquals(correctSearchList, memory.searchTime("01/05/2015 20:00", "01/05/2015 21:30"));
+        } catch (ParseException pe) {
+            fail("Error while parsing date\n");
+        }
+        correctSearchList.add(newTask1);  
+        Collections.sort(correctSearchList, new TaskComparator());
+        try {
+            assertEquals(correctSearchList, memory.searchTime("01/05/2015 17:30", "01/05/2015 18:00"));
+        } catch (ParseException pe) {
+            fail("Error while parsing date\n");
+        }
+    }
+    @Test
+    /**
+     * Boundary case where the period of time falls within the period of a task
+     */
+    public void testSearchPeriodTime3() {
+        ArrayList<Task> correctSearchList = new ArrayList<Task>();
+        correctSearchList.add(newTask4);        
+        try {
+            assertEquals(correctSearchList, memory.searchTime("01/05/2015 18:30", "01/05/2015 19:30"));
+        } catch (ParseException pe) {
+            fail("Error while parsing date\n");
+        }
+    }
+    
+    @Test
+    /**
+     * Boundary case where the period of start or end of specified pinpoints 
+     * the deadline of a deadline task
+     */
+    public void testSearchPeriodTime4() {
+        ArrayList<Task> correctSearchList = new ArrayList<Task>();
+        correctSearchList.add(newTask7);      
+        try {
+            assertEquals(correctSearchList, memory.searchTime("02/05/2015 00:00", "02/05/2015 03:00"));
+        } catch (ParseException pe) {
+            fail("Error while parsing date\n");
+        }
+    }
+
+    @Test
+    /**
+     * Boundary case where the period specified covers the  
+     * the deadline of a deadline task
+     */
+    public void testSearchPeriodTime5() {
+        ArrayList<Task> correctSearchList = new ArrayList<Task>();
+        correctSearchList.add(newTask7);      
+        try {
+            assertEquals(correctSearchList, memory.searchTime("02/05/2015 01:00", "02/05/2015 02:30"));
+            assertEquals(correctSearchList, memory.searchTime("02/05/2015 00:00", "02/05/2015 01:00"));
+        } catch (ParseException pe) {
+            fail("Error while parsing date\n");
         }
     }
     
