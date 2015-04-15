@@ -6,6 +6,10 @@ package logic;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.junit.After;
+import org.junit.Before;
+
+import storage.Memory;
 
 import java.util.*;
 
@@ -18,7 +22,9 @@ public class DeleteHandlerTest {
 	ArrayList<Task> expected = new ArrayList<Task>();
 	Task task1, task2, task3;
 	 
+	@Before
 	public void setUp() throws Exception {
+	    Memory.getInstance().removeAll();
 	    TaskCreator  tc = new TaskCreator("CS2103 exam tomorrow 10am to 12pm");
 	    task1 = tc.createNewTask();
 	    tc.setNewString("read Harry Porter");
